@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -32,6 +32,13 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Verify dist exists
+        run: |
+          echo "=== root files ==="
+          ls -la
+          echo "=== dist files ==="
+          ls -la dist
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
